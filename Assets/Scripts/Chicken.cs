@@ -8,14 +8,16 @@ public class Chicken : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private CapsuleCollider2D cc2d;
     [SerializeField] private float moveSpeed;
-    bool stunned = false;
-    int eggs = 0;
-    int collisionStrength = 5;
+    private bool stunned = false;
+    private int eggs = 0;
+    private int collisionStrength = 5;
+    private float x = 1;
 
     private void FixedUpdate()
     {
         if (!stunned)
         {
+            if (Input.GetAxis("Horizontal") != 0) x = Mathf.Sign(Input.GetAxis("Horizontal"));
             rb.velocity = new Vector2((Input.GetAxis("Horizontal") * moveSpeed)*(1-(0.5f*eggs)), (Input.GetAxis("Vertical") * moveSpeed) * (1 - (0.5f * eggs)));
         }
     }
@@ -25,9 +27,14 @@ public class Chicken : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Car"))
         {
+            if (!stunned) StartCoroutine(carCrash());
             stunned = true;
             rb.velocity = new Vector2((gameObject.transform.position.x - collision.transform.position.x)* collisionStrength, (gameObject.transform.position.y - collision.transform.position.y)* collisionStrength);
-            StartCoroutine(carCrash());
+        }
+        if (collision.gameObject.CompareTag("Egg"))
+        {
+            eggs++;
+            Debug.Log(eggs);
         }
     }
 
