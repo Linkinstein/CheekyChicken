@@ -10,17 +10,19 @@ public class Chicken : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject[] Spawners;
 
-    private bool[] pickedEggs = new bool[6];
     private bool stunned = false;
+    private bool stunImmune = false;
+
+    private bool[] pickedEggs = new bool[6];
     private int eggs = 0;
-    private int collisionStrength = 5;
-    private float x = 1;
+    private int collisionStrength = 10;
+    private int x = 1;
 
     private void FixedUpdate()
     {
         if (!stunned)
         {
-            if (Input.GetAxis("Horizontal") != 0) x = Mathf.Sign(Input.GetAxis("Horizontal"));
+            if (Input.GetAxis("Horizontal") != 0) x = (int)Mathf.Sign(Input.GetAxis("Horizontal"));
             float slow = 1 - (0.05f * eggs);
             rb.velocity = new Vector2((Input.GetAxis("Horizontal") * moveSpeed)* Mathf.Clamp(slow, 0.1f, 1f), (Input.GetAxis("Vertical") * moveSpeed) * Mathf.Clamp(slow, 0.1f, 1f));
         }
@@ -34,7 +36,7 @@ public class Chicken : MonoBehaviour
             ResetEggs();
             if (!stunned) StartCoroutine(carCrash());
             stunned = true;
-            rb.velocity = new Vector2((gameObject.transform.position.x - collision.transform.position.x) * collisionStrength, (gameObject.transform.position.y - collision.transform.position.y) * collisionStrength);
+            if(!stunImmune)rb.velocity = new Vector2((gameObject.transform.position.x - collision.transform.position.x) * collisionStrength, (gameObject.transform.position.y - collision.transform.position.y) * collisionStrength);
             for (int i = 0; i < pickedEggs.Length; i++)
             {
                 if (pickedEggs[i]) StartCoroutine( Spawners[i].GetComponent<EggSpawner>().Spawning());
@@ -53,10 +55,13 @@ public class Chicken : MonoBehaviour
 
     IEnumerator carCrash()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
+        stunImmune = true;
         rb.velocity = new Vector2(0,0);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         stunned = false;
+        yield return new WaitForSeconds(0.2f);
+        stunImmune = false;
     }
 
     private void ResetEggs()

@@ -10,7 +10,9 @@ public class EggSpawner : MonoBehaviour
     public IEnumerator Spawning()
     {
         yield return new WaitForSeconds(5f);
-        GameObject egg = Instantiate(Eggprefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        Vector3 pos = transform.position;
+        pos.z = pos.z-1;
+        GameObject egg = Instantiate(Eggprefab, pos, this.gameObject.transform.rotation);
         egg.GetComponent<Egg>().number = number;
     }
 }
