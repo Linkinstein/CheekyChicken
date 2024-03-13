@@ -18,7 +18,8 @@ public class Chicken : MonoBehaviour
         if (!stunned)
         {
             if (Input.GetAxis("Horizontal") != 0) x = Mathf.Sign(Input.GetAxis("Horizontal"));
-            rb.velocity = new Vector2((Input.GetAxis("Horizontal") * moveSpeed)*(1-(0.5f*eggs)), (Input.GetAxis("Vertical") * moveSpeed) * (1 - (0.5f * eggs)));
+            float slow = 1 - (0.05f * eggs);
+            rb.velocity = new Vector2((Input.GetAxis("Horizontal") * moveSpeed)* Mathf.Clamp(slow, 0.1f, 1f), (Input.GetAxis("Vertical") * moveSpeed) * Mathf.Clamp(slow, 0.1f, 1f));
         }
     }
 
@@ -34,6 +35,7 @@ public class Chicken : MonoBehaviour
         if (collision.gameObject.CompareTag("Egg"))
         {
             eggs++;
+            gameObject.transform.localScale += new Vector3(0.05f, -0.05f, 0f);
             Debug.Log(eggs);
         }
     }
