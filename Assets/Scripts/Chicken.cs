@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -34,14 +35,10 @@ public class Chicken : MonoBehaviour
         if (collision.gameObject.CompareTag("Car"))
         {
             ResetEggs();
-            if (!stunned) StartCoroutine(carCrash());
+            if (!stunned) StartCoroutine(CarCrash());
             stunned = true;
             if(!stunImmune)rb.velocity = new Vector2((gameObject.transform.position.x - collision.transform.position.x) * collisionStrength, (gameObject.transform.position.y - collision.transform.position.y) * collisionStrength);
-            for (int i = 0; i < pickedEggs.Length; i++)
-            {
-                if (pickedEggs[i]) StartCoroutine( Spawners[i].GetComponent<EggSpawner>().Spawning());
-                pickedEggs[i] = false;
-            }
+            
         }
 
         if (collision.gameObject.CompareTag("Egg"))
@@ -53,7 +50,15 @@ public class Chicken : MonoBehaviour
         }
     }
 
-    IEnumerator carCrash()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Homebase"))
+        {
+            ResetEggs();
+        }
+    }
+
+    IEnumerator CarCrash()
     {
         yield return new WaitForSeconds(0.3f);
         stunImmune = true;
@@ -68,5 +73,10 @@ public class Chicken : MonoBehaviour
     {
         gameObject.transform.localScale = Vector3.one;
         eggs = 0;
+        for (int i = 0; i < pickedEggs.Length; i++)
+        {
+            if (pickedEggs[i]) StartCoroutine(Spawners[i].GetComponent<EggSpawner>().Spawning());
+            pickedEggs[i] = false;
+        }
     }
 }
