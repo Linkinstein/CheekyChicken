@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] cars;
-    [SerializeField] private GameObject despawnGO;
+    [SerializeField] private ConvoyData[] convoy;
     [SerializeField] private int level = 1;
     [SerializeField] private int x = 1;
 
@@ -17,32 +16,34 @@ public class CarSpawner : MonoBehaviour
 
     IEnumerator InitialSpawn()
     {
-        yield return new WaitForSeconds(0.1f);//Random.Range(0f, 5f));
+        yield return new WaitForSeconds(Random.Range(0f, 2f));
         SpawnCar();
     }
 
     public void SpawnCar()
     {
-        //Random.Range(0, 10);
         int j = RNG();
-        switch (j)
-        { 
-            case 0:
-                Vector3 pos = transform.position;
-                pos.z = pos.z - 1;
-                GameObject egg = Instantiate(cars[0], pos, this.gameObject.transform.rotation);
-                egg.GetComponent<Car>().x = x;
-                break;
-
-            default: 
-                
-                break;
+        int length = convoy[j].cars.Length;
+        for (int i = 0; i < length; i++)
+        {
+            Vector3 pos = transform.position;
+            pos += new Vector3(-convoy[j].distances[i] * x, 0f, 0f);
+            setupCar( Instantiate(convoy[j].cars[i], pos, this.gameObject.transform.rotation), i+1==length );
         }
+    }
+
+
+
+    private void setupCar(GameObject car, bool tail)
+    {
+        Car carS = car.GetComponent<Car>();
+        carS.x = x;
+        carS.tail = tail;
     }
 
     private int RNG()
     {
-
-        return 0;
+        if ( level == 1 ) return Random.Range(0, convoy.Length);
+        return 1;
     }
 }

@@ -23,7 +23,7 @@ public class Chicken : MonoBehaviour
         if (!stunned)
         {
             if (Input.GetAxis("Horizontal") != 0) x = (int)Mathf.Sign(Input.GetAxis("Horizontal"));
-            float slow = 1 - (0.05f * eggs);
+            float slow = 1 - (0.1f * eggs);
             rb.velocity = new Vector2((Input.GetAxis("Horizontal") * moveSpeed)* Mathf.Clamp(slow, 0.1f, 1f), (Input.GetAxis("Vertical") * moveSpeed) * Mathf.Clamp(slow, 0.1f, 1f));
         }
     }

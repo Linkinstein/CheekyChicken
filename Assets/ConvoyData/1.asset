@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac1b696c6af0614f8ee4d496dacb1cc, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  cars:
+  - {fileID: 7362398229888182056, guid: 96294d024ab1d2c48a87aa2e85e2ac51, type: 3}
+  - {fileID: 7362398229888182056, guid: d27f1afb3703fa544a0ec83ddcf76507, type: 3}
+  - {fileID: 7362398229888182056, guid: e6bcaf3763260554a8390acf63204859, type: 3}
+  distances:
+  - 1
+  - 2
+  - 3
