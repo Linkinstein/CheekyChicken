@@ -21,6 +21,7 @@ public class Buttons : MonoBehaviour
 
     private void Restart()
     {
-        SceneManager.LoadScene("Game");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Link's Scene");
     }
 }

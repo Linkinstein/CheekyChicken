@@ -31,6 +31,7 @@ public class Chicken : MonoBehaviour
     private int collisionStrength = 10;
     private bool stunned = false;
     private bool stunImmune = false;
+
     public int x
     {
         get { return _x; }
@@ -50,6 +51,7 @@ public class Chicken : MonoBehaviour
             Time.timeScale = 0f;
             gameover = true;
             gameOverMenu.SetActive(true);
+            highscore.SetText(score+"");
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && !gameover)
