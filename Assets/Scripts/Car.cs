@@ -15,12 +15,12 @@ public class Car : MonoBehaviour
 
     public int x
     {
+        get { return _x; }
         set 
         { 
             if (value < 0 ) sr.flipX = true;
             _x = value;
         }
-        get { return _x; }
     }
 
     private void FixedUpdate()

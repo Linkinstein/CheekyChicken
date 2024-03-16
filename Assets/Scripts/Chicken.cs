@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,6 +10,7 @@ public class Chicken : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private CapsuleCollider2D cc2d;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private TextMeshProUGUI scoretext;
     [SerializeField] private GameObject[] Spawners;
 
     private bool stunned = false;
@@ -18,6 +20,17 @@ public class Chicken : MonoBehaviour
     private int eggs = 0;
     private int collisionStrength = 10;
     private int x = 1;
+    private int _score = 0;
+
+    public int score
+    { 
+        get { return _score; } 
+        set 
+        {  
+            _score = value;
+            scoretext.SetText(""+_score);
+        } 
+    }
 
     private void FixedUpdate()
     {
@@ -54,19 +67,22 @@ public class Chicken : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Homebase"))
         {
+            score += eggs;
             ResetEggs();
         }
     }
 
     IEnumerator CarCrash()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         stunImmune = true;
         rb.velocity = new Vector2(0,0);
         yield return new WaitForSeconds(1f);
         stunned = false;
-        yield return new WaitForSeconds(0.2f);
-        stunImmune = false;
+        cc2d.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+        cc2d = gameObject.GetComponent<CapsuleCollider2D>();
     }
 
     private void ResetEggs()
