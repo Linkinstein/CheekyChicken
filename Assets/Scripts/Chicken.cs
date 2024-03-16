@@ -14,7 +14,7 @@ public class Chicken : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private TextMeshProUGUI gameOverText;
-    [SerializeField] private TextMeshProUGUI highscore;
+    [SerializeField] private TextMeshProUGUI newhighscoretext;
     [SerializeField] private GameObject[] Spawners;
     [SerializeField] private float moveSpeed;
 
@@ -51,7 +51,20 @@ public class Chicken : MonoBehaviour
             Time.timeScale = 0f;
             gameover = true;
             gameOverMenu.SetActive(true);
-            highscore.SetText(score+"");
+            gameOverText.SetText(score+"");
+            if (PlayerPrefs.HasKey("hiscore"))
+            {
+                if (score > PlayerPrefs.GetFloat("hiscore"))
+                {
+                    PlayerPrefs.SetInt("hiscore", score);
+                    newhighscoretext.SetText("New Highscore!");
+                }
+            }
+            else
+            {
+                PlayerPrefs.SetInt("hiscore", score);
+                newhighscoretext.SetText("New Highscore!");
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && !gameover)
