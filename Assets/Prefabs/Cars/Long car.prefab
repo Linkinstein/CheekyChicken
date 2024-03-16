@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6895742103895008783}
   - component: {fileID: 4706798208664032732}
   m_Layer: 8
-  m_Name: Car 8
+  m_Name: Long car
   m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9969b4663ca158e478ebbf4c7cad1e22, type: 3}
-  m_Color: {r: 0.07778566, g: 0.7915846, b: 0.8679245, a: 1}
+  m_Sprite: {fileID: 21300000, guid: cf47877ac71bf6142b18b76414fd4107, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,8 +119,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: -0.1}
-  m_Size: {x: 1.5, y: 0.75}
+  m_Offset: {x: -0.05462173, y: -0.21941502}
+  m_Size: {x: 2.8326688, y: 0.5111754}
   m_Direction: 1
 --- !u!50 &6895742103895008783
 Rigidbody2D:
@@ -165,5 +165,5 @@ MonoBehaviour:
   cc2d: {fileID: 2088269976194707710}
   sr: {fileID: 5627226690745256017}
   _x: 1
-  moveSpeed: 3
+  moveSpeed: 15
   tail: 1

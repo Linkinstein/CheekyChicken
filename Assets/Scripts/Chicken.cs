@@ -9,27 +9,64 @@ public class Chicken : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private CapsuleCollider2D cc2d;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private TextMeshProUGUI scoretext;
+    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private TextMeshProUGUI highscore;
     [SerializeField] private GameObject[] Spawners;
+    [SerializeField] private float moveSpeed;
 
-    private bool stunned = false;
-    private bool stunImmune = false;
+    private int score = 0;
+    private float timeLeft = 90;
+    private bool paused = false;
+    public bool gameover = false;
 
     private bool[] pickedEggs = new bool[6];
     private int eggs = 0;
-    private int collisionStrength = 10;
-    private int x = 1;
-    private int _score = 0;
 
-    public int score
-    { 
-        get { return _score; } 
-        set 
-        {  
-            _score = value;
-            scoretext.SetText(""+_score);
-        } 
+    private int _x = 1;
+
+    private int collisionStrength = 10;
+    private bool stunned = false;
+    private bool stunImmune = false;
+    public int x
+    {
+        get { return _x; }
+        set
+        {
+            if (value < 0) sr.flipX = true;
+            else sr.flipX = false;
+            _x = value;
+        }
+    }
+
+    private void Update()
+    {
+        timerText.SetText(Mathf.Clamp(Mathf.FloorToInt(timeLeft -= Time.deltaTime), 0f, 90f) + "");
+        if (timeLeft < 0f)
+        {
+            Time.timeScale = 0f;
+            gameover = true;
+            gameOverMenu.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameover)
+        {
+            if (paused) 
+            { 
+                Time.timeScale = 1f; 
+                paused = false;
+                pauseMenu.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                paused = true;
+                pauseMenu.SetActive(true);
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -81,8 +118,9 @@ public class Chicken : MonoBehaviour
         stunned = false;
         cc2d.enabled = false;
         yield return new WaitForSeconds(0.5f);
-        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
-        cc2d = gameObject.GetComponent<CapsuleCollider2D>();
+        cc2d.enabled = true;
+        //gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+        //cc2d = gameObject.GetComponent<CapsuleCollider2D>();
     }
 
     private void ResetEggs()
