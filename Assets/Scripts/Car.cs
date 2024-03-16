@@ -7,10 +7,21 @@ public class Car : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private CapsuleCollider2D cc2d;
+    [SerializeField] private SpriteRenderer sr;
 
-    [SerializeField] public int x = 1;
+    [SerializeField] public int _x = 1;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] public bool tail = true;
+
+    public int x
+    {
+        get { return _x; }
+        set 
+        { 
+            if (value < 0 ) sr.flipX = true;
+            _x = value;
+        }
+    }
 
     private void FixedUpdate()
     {
