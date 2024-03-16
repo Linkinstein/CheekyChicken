@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class Chicken : MonoBehaviour
 {
+    [SerializeField] private GameObject eggGO;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private CapsuleCollider2D cc2d;
     [SerializeField] private SpriteRenderer sr;
@@ -41,6 +42,11 @@ public class Chicken : MonoBehaviour
             else sr.flipX = false;
             _x = value;
         }
+    }
+
+    private void OnEnable()
+    {
+        Time.timeScale = 1f;
     }
 
     private void Update()
@@ -108,6 +114,7 @@ public class Chicken : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Egg"))
         {
+            eggGO.SetActive(true);
             eggs++;
             gameObject.transform.localScale += new Vector3(0.05f, -0.05f, 0f);
             pickedEggs[collision.gameObject.GetComponent<Egg>().number] = true;
@@ -134,12 +141,11 @@ public class Chicken : MonoBehaviour
         cc2d.enabled = false;
         yield return new WaitForSeconds(0.5f);
         cc2d.enabled = true;
-        //gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
-        //cc2d = gameObject.GetComponent<CapsuleCollider2D>();
     }
 
     private void ResetEggs()
     {
+        eggGO.SetActive(false);
         gameObject.transform.localScale = Vector3.one;
         eggs = 0;
         for (int i = 0; i < pickedEggs.Length; i++)

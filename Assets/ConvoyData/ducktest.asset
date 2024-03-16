@@ -10,13 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bac1b696c6af0614f8ee4d496dacb1cc, type: 3}
-  m_Name: 1
+  m_Name: ducktest
   m_EditorClassIdentifier: 
   cars:
-  - {fileID: 7362398229888182056, guid: f6e317989b8a6a649a9b956acb9bde49, type: 3}
-  - {fileID: 7362398229888182056, guid: 5aaa9879376481d4a97edcf25db1b763, type: 3}
-  - {fileID: 7362398229888182056, guid: 1a04ffa7a859ab84c8a49997f82519b2, type: 3}
+  - {fileID: 7362398229888182056, guid: 9fd4ac0d65c07174e9aacd147db69afc, type: 3}
   distances:
-  - 1
-  - 4
-  - 7
+  - 0

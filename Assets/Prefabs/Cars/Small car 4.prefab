@@ -165,5 +165,5 @@ MonoBehaviour:
   cc2d: {fileID: 2088269976194707710}
   sr: {fileID: 5627226690745256017}
   _x: 1
-  moveSpeed: 7
+  moveSpeed: 9
   tail: 1

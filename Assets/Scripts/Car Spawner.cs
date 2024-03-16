@@ -27,7 +27,7 @@ public class CarSpawner : MonoBehaviour
         for (int i = 0; i < length; i++)
         {
             Vector3 pos = transform.position;
-            pos += new Vector3(-convoy[j].distances[i] * x, 0f, 0f);
+            pos += new Vector3(-convoy[j].distances[i] * x, 0f, pos.y + 8);
             setupCar( Instantiate(convoy[j].cars[i], pos, this.gameObject.transform.rotation), i+1==length );
         }
     }
@@ -43,7 +43,7 @@ public class CarSpawner : MonoBehaviour
 
     private int RNG()
     {
-        if ( level == 1 ) return Random.Range(0, convoy.Length);
+        if ( level == 1 ) return Random.Range(0, convoy.Length/2);
         return 1;
     }
 }
