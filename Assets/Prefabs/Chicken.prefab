@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8076931073482566895}
   m_Layer: 7
   m_Name: Chicken
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3325531763439299474}
-  cc2d: {fileID: 0}
-  moveSpeed: 5
+  cc2d: {fileID: 5353365537968027749}
+  sr: {fileID: 1501079389824382270}
+  scoretext: {fileID: 0}
   Spawners:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  moveSpeed: 5
