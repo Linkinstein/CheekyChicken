@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject[] carSpawners;
+    [SerializeField] public int level = 2;
+
+
+    private void OnEnable()
     {
-        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        
+        if (scene.name == "Link's Scene")
+        {
+            carSpawners = GameObject.FindGameObjectsWithTag("CarSpawner");
+
+            foreach (GameObject spawners in carSpawners)
+            {
+                spawners.GetComponent<CarSpawner>().level = level;
+            }
+
+            GameObject.FindWithTag("Player").GetComponent<Chicken>().level = level;
+        }
     }
+
 }

@@ -8,6 +8,8 @@ TagManager:
   - Egg
   - Homebase
   - Manager
+  - FxTemporaire
+  - CarSpawner
   layers:
   - Default
   - TransparentFX

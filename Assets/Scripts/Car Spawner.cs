@@ -6,7 +6,7 @@ using UnityEngine;
 public class CarSpawner : MonoBehaviour
 {
     [SerializeField] private ConvoyData[] convoy;
-    [SerializeField] private int level = 1;
+    [SerializeField] public int level = 1;
     [SerializeField] private int x = 1;
 
     private void Start()
@@ -43,7 +43,9 @@ public class CarSpawner : MonoBehaviour
 
     private int RNG()
     {
-        if ( level == 1 ) return Random.Range(0, convoy.Length/2);
+        if ( level == 1 ) return Random.Range(0, 11);
+        if (level == 2) return Random.Range(0, 21);
+        if (level == 3) return Random.Range(9, 21);
         return 1;
     }
 }

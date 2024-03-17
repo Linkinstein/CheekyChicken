@@ -22,6 +22,7 @@ public class Chicken : MonoBehaviour
     [SerializeField] private GameObject[] Spawners;
     [SerializeField] private float moveSpeed;
 
+    public int level = 1;
     private int score = 0;
     private float timeLeft = 90;
     private bool paused = false;
