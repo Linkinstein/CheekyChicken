@@ -10,6 +10,7 @@ TagManager:
   - Manager
   - FxTemporaire
   - CarSpawner
+  - pickupADS
   layers:
   - Default
   - TransparentFX

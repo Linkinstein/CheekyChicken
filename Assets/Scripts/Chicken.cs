@@ -7,12 +7,14 @@ using UnityEngine.UIElements;
 
 public class Chicken : MonoBehaviour
 {
-    [SerializeField] private Sprite skinSprite;
-    [SerializeField] private Sprite chickenStun;
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField] public Sprite skinSprite;
+    [SerializeField] public Sprite chickenStun;
     [SerializeField] private GameObject eggGO;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private CapsuleCollider2D cc2d;
     [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private AudioSource ads;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverMenu;
@@ -51,7 +53,12 @@ public class Chicken : MonoBehaviour
     private void OnEnable()
     {
         Time.timeScale = 1f;
+    }
+
+    private void Start()
+    {
         sr.sprite = skinSprite;
+
     }
 
     private void Update()
@@ -140,6 +147,7 @@ public class Chicken : MonoBehaviour
 
     IEnumerator CarCrash()
     {
+        ads.PlayOneShot(hitSound);
         sr.sprite = chickenStun;
         yield return new WaitForSeconds(0.5f);
         stunImmune = true;

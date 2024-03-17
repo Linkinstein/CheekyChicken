@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] carSpawners;
     [SerializeField] public int level = 2;
+    [SerializeField] private Sprite[] skins;
+    public int skinNo = 1;
 
 
     private void OnEnable()
@@ -26,7 +28,10 @@ public class GameManager : MonoBehaviour
                 spawners.GetComponent<CarSpawner>().level = level;
             }
 
-            GameObject.FindWithTag("Player").GetComponent<Chicken>().level = level;
+            Chicken chickScript = GameObject.FindWithTag("Player").GetComponent<Chicken>();
+            chickScript.level = level;
+            chickScript.skinSprite = skins[skinNo-1];
+            chickScript.chickenStun = skins[skinNo];
         }
     }
 
