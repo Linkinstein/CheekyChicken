@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6895742103895008783}
   - component: {fileID: 4706798208664032732}
   m_Layer: 8
-  m_Name: Gremlin
+  m_Name: Plane
   m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.28, y: -1.75, z: 0}
-  m_LocalScale: {x: 1.8, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: df89e01fbd5cc8f48a8c4cf9a6b42f07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47f4381588643034383ad0e7555e8e59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,8 +119,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029929828, y: -0.12070438}
-  m_Size: {x: 1.082825, y: 0.35447448}
+  m_Offset: {x: 0.18284333, y: -0.18056785}
+  m_Size: {x: 3.1220083, y: 0.56021327}
   m_Direction: 1
 --- !u!50 &6895742103895008783
 Rigidbody2D:
@@ -165,5 +165,5 @@ MonoBehaviour:
   cc2d: {fileID: 2088269976194707710}
   sr: {fileID: 5627226690745256017}
   _x: 1
-  moveSpeed: 12
+  moveSpeed: 30
   tail: 1

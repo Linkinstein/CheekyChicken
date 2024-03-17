@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6895742103895008783}
   - component: {fileID: 4706798208664032732}
   m_Layer: 8
-  m_Name: Small car 5
+  m_Name: HSmall carLG
   m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4d15ad8dad4bd7a4e89d335f6eaebabb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dccb524356be2f64d92962a2487b1673, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,8 +119,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00030856137, y: -0.10000001}
-  m_Size: {x: 1.0223438, y: 0.75000584}
+  m_Offset: {x: -0.0012627823, y: 0.016326489}
+  m_Size: {x: 1.1260964, y: 0.45447588}
   m_Direction: 1
 --- !u!50 &6895742103895008783
 Rigidbody2D:

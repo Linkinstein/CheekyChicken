@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac1b696c6af0614f8ee4d496dacb1cc, type: 3}
+  m_Name: 18 - Train
+  m_EditorClassIdentifier: 
+  cars:
+  - {fileID: 7362398229888182056, guid: 2633c0910a4aab74487d8061be1452e9, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  - {fileID: 7362398229888182056, guid: 345dd5912f14f4741a190b9b0f1b18ee, type: 3}
+  distances:
+  - 2
+  - 4
+  - 6
+  - 8
+  - 10
+  - 12
+  - 14
+  - 16
+  - 18
+  - 20
+  - 22
+  - 24
+  - 26
+  - 28
+  - 30
+  - 32
+  - 34
+  - 36
+  - 38
+  - 40

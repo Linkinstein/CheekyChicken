@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   cars:
-  - {fileID: 7362398229888182056, guid: f6e317989b8a6a649a9b956acb9bde49, type: 3}
   - {fileID: 7362398229888182056, guid: 5aaa9879376481d4a97edcf25db1b763, type: 3}
+  - {fileID: 7362398229888182056, guid: f6e317989b8a6a649a9b956acb9bde49, type: 3}
   - {fileID: 7362398229888182056, guid: 1a04ffa7a859ab84c8a49997f82519b2, type: 3}
   distances:
   - 1

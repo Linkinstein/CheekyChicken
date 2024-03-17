@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cars:
   - {fileID: 7362398229888182056, guid: 66a8562a2e727334592089f5a51233ed, type: 3}
-  - {fileID: 7362398229888182056, guid: 66a8562a2e727334592089f5a51233ed, type: 3}
+  - {fileID: 7362398229888182056, guid: 1aac66e6b97558647ae179944c27da3e, type: 3}
   distances:
   - 1
   - 6

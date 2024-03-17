@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 
 public class Chicken : MonoBehaviour
 {
+    [SerializeField] private Sprite skinSprite;
+    [SerializeField] private Sprite chickenStun;
     [SerializeField] private GameObject eggGO;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private CapsuleCollider2D cc2d;
@@ -15,6 +17,7 @@ public class Chicken : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private TextMeshProUGUI eggCountText;
     [SerializeField] private TextMeshProUGUI newhighscoretext;
     [SerializeField] private GameObject[] Spawners;
     [SerializeField] private float moveSpeed;
@@ -47,10 +50,12 @@ public class Chicken : MonoBehaviour
     private void OnEnable()
     {
         Time.timeScale = 1f;
+        sr.sprite = skinSprite;
     }
 
     private void Update()
     {
+        eggCountText.SetText(eggs+"");
         timerText.SetText(Mathf.Clamp(Mathf.FloorToInt(timeLeft -= Time.deltaTime), 0f, 90f) + "");
         if (timeLeft < 0f)
         {
@@ -133,10 +138,12 @@ public class Chicken : MonoBehaviour
 
     IEnumerator CarCrash()
     {
+        sr.sprite = chickenStun;
         yield return new WaitForSeconds(0.5f);
         stunImmune = true;
         rb.velocity = new Vector2(0,0);
         yield return new WaitForSeconds(1f);
+        sr.sprite = skinSprite;
         stunned = false;
         cc2d.enabled = false;
         yield return new WaitForSeconds(0.5f);
