@@ -17,37 +17,66 @@ public class Buttons : MonoBehaviour
     private void OnEnable()
     {
         button = GetComponent<Button>();
-        if (restart) button.onClick.AddListener(() => Restart());
-        if (back2menu) button.onClick.AddListener(() => Back2Menu());
-        if (exit) button.onClick.AddListener(() => Exit());
-        if (play) button.onClick.AddListener(() => Play());
+        if (restart) button.onClick.AddListener(() => Restart0());
+        if (back2menu) button.onClick.AddListener(() => Back2Menu0());
+        if (exit) button.onClick.AddListener(() => Exit0());
+        if (play) button.onClick.AddListener(() => Play0());
     }
 
-    private void Restart()
+    public void Restart0()
     {
+        StartCoroutine(Restart());
+    }
+
+    public void Back2Menu0()
+    {
+        StartCoroutine(Back2Menu());
+    }
+
+    public void Exit0()
+    {
+        StartCoroutine(Exit());
+    }
+
+    public void Play0()
+    {
+        StartCoroutine(Play());
+    }
+
+    IEnumerator Restart()
+    {
+        this.gameObject.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1f;
         SceneManager.LoadScene("Link's Scene");
     }
 
-    private void Back2Menu()
+    IEnumerator Back2Menu()
     {
+        this.gameObject.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
     }
 
-    private void Exit()
+    IEnumerator Exit()
     {
+        this.gameObject.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1f;
         Application.Quit();
     }
-    private void Play()
+    IEnumerator Play()
     {
+        this.gameObject.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(0.5f);
         GameObject manager = GameObject.FindWithTag("Manager");
-        if (manager != null) 
-        { 
+        if (manager != null)
+        {
             manager.GetComponent<GameManager>().level = level;
         }
         Time.timeScale = 1f;
         SceneManager.LoadScene("Link's Scene");
     }
+
 }
