@@ -10,35 +10,42 @@ public class SkinChanger : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI skinName;
 
+    
     Button button;
 
-    int skinID = 1;
+    int skinID = 0;
 
     private void OnEnable()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(() => ChangeSkin());
+        button.onClick.AddListener(() => ChangeSkin(true));
     }
 
-    public void ChangeSkin()
+    private void Start()
+    {
+        skinID = GameObject.FindWithTag("Manager").GetComponent<GameManager>().skinNo;
+        ChangeSkin(false);
+    }
+
+    public void ChangeSkin(bool changing)
     {
         GameManager gm = GameObject.FindWithTag("Manager").GetComponent<GameManager>();
-        skinID++;
-        if (skinID > 3) skinID = 1;
+        if (changing) skinID = skinID+2;
+        if (skinID > 4) skinID = 0;
         switch (skinID)
         {
             default:
-            case 1:
+            case 0:
                 skinName.SetText("Chicken");
-                gm.skinNo = 1;
+                gm.skinNo = 0;
                 break;
             case 2:
                 skinName.SetText("Zombie Chicken");
                 gm.skinNo = 2;
                 break;
-            case 3:
+            case 4:
                 skinName.SetText("Mecha Chicken");
-                gm.skinNo = 3;
+                gm.skinNo = 4;
                 break;
 
         }

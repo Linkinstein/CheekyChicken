@@ -58,7 +58,6 @@ public class Chicken : MonoBehaviour
     private void Start()
     {
         sr.sprite = skinSprite;
-
     }
 
     private void Update()

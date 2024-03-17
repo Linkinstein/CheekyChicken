@@ -48,10 +48,7 @@ public class Buttons : MonoBehaviour
         GameObject.FindWithTag("Manager").GetComponent<AudioSource>().Play();
         Time.timeScale = 1f;
         GameObject manager = GameObject.FindWithTag("Manager");
-        if (manager != null)
-        {
-            manager.GetComponent<GameManager>().level = level;
-        }
+        manager.GetComponent<GameManager>().level = level;
         SceneManager.LoadScene("Link's Scene");
     }
 

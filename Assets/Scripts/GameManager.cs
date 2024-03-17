@@ -1,20 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
     [SerializeField] private GameObject[] carSpawners;
     [SerializeField] public int level = 2;
     [SerializeField] private Sprite[] skins;
-    public int skinNo = 1;
+    public int skinNo = 0;
 
+    private void Awake()
+    {
+        if ( instance == null )
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -30,8 +43,8 @@ public class GameManager : MonoBehaviour
 
             Chicken chickScript = GameObject.FindWithTag("Player").GetComponent<Chicken>();
             chickScript.level = level;
-            chickScript.skinSprite = skins[skinNo-1];
-            chickScript.chickenStun = skins[skinNo];
+            chickScript.skinSprite = skins[skinNo];
+            chickScript.chickenStun = skins[skinNo+1];
         }
     }
 
