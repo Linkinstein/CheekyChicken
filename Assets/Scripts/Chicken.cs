@@ -64,17 +64,18 @@ public class Chicken : MonoBehaviour
             gameover = true;
             gameOverMenu.SetActive(true);
             gameOverText.SetText(score+"");
-            if (PlayerPrefs.HasKey("hiscore"))
+            string scoreID = "hiscore" + level;
+            if (PlayerPrefs.HasKey(scoreID))
             {
-                if (score > PlayerPrefs.GetFloat("hiscore"))
+                if (score > PlayerPrefs.GetFloat(scoreID))
                 {
-                    PlayerPrefs.SetInt("hiscore", score);
+                    PlayerPrefs.SetInt(scoreID, score);
                     newhighscoretext.SetText("New Highscore!");
                 }
             }
             else
             {
-                PlayerPrefs.SetInt("hiscore", score);
+                PlayerPrefs.SetInt(scoreID, score);
                 newhighscoretext.SetText("New Highscore!");
             }
         }

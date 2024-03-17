@@ -11,6 +11,6 @@ public class Score : MonoBehaviour
     private void Start()
     {
         string scoreID = "hiscore" + level;
-        level = PlayerPrefs.GetInt(scoreID);
+        score.SetText(PlayerPrefs.GetInt(scoreID)+"");
     }
 }
