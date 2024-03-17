@@ -46,36 +46,36 @@ public class Buttons : MonoBehaviour
     IEnumerator Restart()
     {
         this.gameObject.GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1f;
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Link's Scene");
     }
 
     IEnumerator Back2Menu()
     {
         this.gameObject.GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1f;
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Main Menu");
     }
 
     IEnumerator Exit()
     {
         this.gameObject.GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1f;
+        yield return new WaitForSeconds(0.5f);
         Application.Quit();
     }
     IEnumerator Play()
     {
         this.gameObject.GetComponent<AudioSource>().Play();
+        Time.timeScale = 1f;
         yield return new WaitForSeconds(0.5f);
         GameObject manager = GameObject.FindWithTag("Manager");
         if (manager != null)
         {
             manager.GetComponent<GameManager>().level = level;
         }
-        Time.timeScale = 1f;
         SceneManager.LoadScene("Link's Scene");
     }
 
